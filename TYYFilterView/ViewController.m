@@ -30,6 +30,13 @@
     [self setupUI];
 }
 
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    if ([self navFilterCurrentIndex]) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.width * [self navFilterCurrentIndex], 0)];
+    }
+}
+
 - (void)setupUI{
     self.navigationController.navigationBar.translucent = NO;
     _scrollView = [[UIScrollView alloc]init];
@@ -89,7 +96,7 @@
 }
 
 - (NSInteger)navFilterCurrentIndex{
-    return 3;
+    return 1;
 }
 
 - (NSArray<NSString *> *)navFilterTitleList{
